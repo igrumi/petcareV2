@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} PetCare - Iniciar Sesi&oacute;n {% endblock %}
+
+{% block estilos %}
+    <link rel="stylesheet" href="{% static '/core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/core/css/style1.css' %}">
+    <link rel="stylesheet" href="{% static '/core/css/responsive.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
+    <link rel="stylesheet" href="{% static '/core/css/stylecarrito1.css' %}">
+    <link rel="icon" href="{% static '/core/img/fevicon.png' %}" type="../image/gif" />
+    <link rel="stylesheet" href="{% static '/core/css/jquery.mCustomScrollbar.min.css' %}">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="{% static '/core/css/formato-login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div style="background: url({% static '/core/img/fondo1.jpg' %}); background-repeat: no-repeat; background-size: cover;"> 
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <div class="login-box" style="z-index: 999999; margin-top: 2em;">
+            <img class="avatar" src="{% static '/core/img/logo.PNG' %}" alt="logo maninon">
+            <h1>Iniciar Sesión </h1><br>
+            <form action="" id="formulario" method="post">
+                {% csrf_token %} 
+                <p>Usuario: <input type="text" name="username" id="username"></p>
+                <p>Clave: <input type="password" name="contrasena" id="contrasena"></p>
+                <button type="submit" style="background-color: #FFF; width: 100%; padding: .7em 0; margin-bottom: 2em; border-radius: 5px;"
+                >Iniciar Sesión</button>
+                <a style="padding: 0.3em; text-align:center; width: 100%; text-decoration:none; color:#fff; font-weight:bold; font-size:1rem;" class="btn btn-primary"  href="../vistas_admin/index_admin.html">Registrarse</a><br><br><br>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static '/core/js_validaciones/js-login.js' %}"></script>
+{% endblock %}

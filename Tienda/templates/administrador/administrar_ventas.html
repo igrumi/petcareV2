@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} PetCare (Administrador) - Administrar Ventas {% endblock %}
+{% block estilos %}
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Registro de cliente</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="{% static '/core/css/styleform.css' %}">
+   <link rel="stylesheet" href="{% static '/core/css/responsive.css' %}">
+   <link rel="stylesheet" href="{% static '/core/css/style1.css' %}">
+   <link rel="stylesheet" href="{% static '/core/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static '/core/css/register.css' %}">
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
+   <link rel="stylesheet" href="{% static '/core/css/carro.css' %}">
+{% endblock %}
+{% block content %}
+<div style="padding-top: 250px;" class="container">
+   <div class="row borde-bootstrap-row">
+      <font size="7">Historial de Ventas</font>
+   </div>
+   <br>
+   <section class="details">
+        <div class="details__container">
+            <div class="detail__products">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nro Factura</th>
+                            <th>Fecha</th>
+                            <th>Nombre Cliente</th>
+                            <th>Monto Total</th>
+                            <th>Estado Actual</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for venta in ventas %}
+                            <tr class="tr--g">
+                                <th>{{ venta.nroFactura }}</th>
+                                <th>{{ venta.fecha }}</th>
+                                <th>{{ venta.idUsuario.username }}</th>
+                                <th>${{ venta.montoTotal }}</th>
+                                <th>{{ venta.estadoActual }}</th>
+                                <th><a href="{% url 'administrar_venta' venta.nroFactura %}" type="button" class="btn btn-primary">
+                                Detalles</a></th>
+
+                                <th><a href="{% url 'despachar' venta.nroFactura %}" type="button" class="btn btn-info">
+                                    Despachar</a></th>
+
+                                <th><a href="{% url 'entregar' venta.nroFactura %}" type="button" class="btn btn-success">
+                                    Entregar</a></th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+{% block scripts %}
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="{% static '/core/js/js_validaciones/validacion-formularios.js' %}"></script>
+{% endblock %}

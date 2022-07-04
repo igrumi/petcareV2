@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} PetCare - {{ producto.nomProducto }} {% endblock %}
+
+{% block estilos %}
+    <link rel="stylesheet" href="{% static '/core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/core/css/style1.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static '/core/css/star.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static '/core/css/responsive.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
+    <link rel="stylesheet" href="{% static '/core/css/stylecarrito1.css' %}">
+
+    <link rel="icon" href="{% static '/core/img/fevicon.png' %}" type="image/gif" />
+    <link rel="stylesheet" href="{% static '/core/css/jquery.mCustomScrollbar.min.css' %}">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+{% endblock %}
+
+{% block content %}
+        <div style="padding-top: 200px; display: flex; flex-direction: column; align-items: center;" class='container'>
+            <img src="{{ producto.urlImagenProducto }}" alt="product-img" class="product__img">
+            <div class="product-details">
+                <h2 class="product__title">{{ producto.nomProducto }}</h2>
+                <p class="product__price">Precio: ${{ producto.precio }}</p>
+                <p class="product__stock"><span class="product__detail--bold">Stock:</span> Disponible</p>
+                <p class="product__descr">{{ producto.descripcion }}</p>
+                <a href="{% url 'pagar' producto.idProducto %}"class="btn-primary product__btn">Agregar al carro</a>
+            </div>
+        </div>
+{%endblock%}
+
+
+{%block scripts %}
+    <script src="{% static '/core/js/jquery.min.js' %}"></script>
+    <script src="{% static '/core/js/popper.min.js' %}"></script>
+    <script src="{% static '/core/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/core/js/jquery-3.0.0.min.js' %}"></script>
+    <script src="{% static '/core/js/scriptcarrito.js' %}"></script>
+    <script src="{% static '/core/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static '/core/js/custom.js' %}"></script>
+    <script>
+    function menuToggle(){
+        const toggleMenu = document.querySelector('.menu');
+        toggleMenu.classList.toggle('active')
+    }
+    </script>
+{% endblock %}
